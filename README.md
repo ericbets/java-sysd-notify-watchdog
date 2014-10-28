@@ -9,7 +9,7 @@ Lib for java daemons to send keep-alive messages to refresh the systemd watchdog
  	notifier.start();
 ```
  
-### Advanced Usage
+#### Advanced Usage
 ```java
 	SysDNotifier notifier = new SysDNotifier();
 	notifier.setAuditor(new Auditor() {
@@ -24,7 +24,7 @@ Lib for java daemons to send keep-alive messages to refresh the systemd watchdog
 	notifier.start();
  ```
  
-### .service file layout 
+#### .service file layout 
 ```shell
 [Unit]
 Description=My Service
