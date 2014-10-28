@@ -4,7 +4,7 @@ public class sysdnotify {
 	static
 	{		
 		NarSystem.loadLibrary();
-			}
+	}
 
 	public native String pingWatchdog();
 
