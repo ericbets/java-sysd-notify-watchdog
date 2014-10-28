@@ -15,8 +15,9 @@ Lib for java daemons to send keep-alive messages to refresh the systemd watchdog
 	notifier.setAuditor(new Auditor() {
 		@Override
 		public boolean allGood() {				
-			//Do more extensive internal checking of the process, and if it's ok, return true.
-			//Returning false will have the effect of suppressing the keep-alive message, causing systemd to kill and restart the process. 
+			//Do more extensive internal checking of the process, if ok, return true.
+			//Returning false will have the effect of suppressing the keep-alive 
+			//message, causing systemd to kill and restart the process. 
 			return true;
 		}
 	});
