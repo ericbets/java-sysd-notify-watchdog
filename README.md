@@ -31,6 +31,7 @@ Description=My Service
 
 [Service]
 PIDFile=/tmp/my-service.pid
+Environment=LD_PRELOAD=/usr/lib64/libsystemd-daemon.so
 ExecStart=/usr/lib/jvm/java-1.8.0/bin/java -jar /usr/local/bin/my-service.jar
 WatchdogSec=500
 Restart=on-failure
