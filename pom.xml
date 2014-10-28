@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.tricorder</groupId>
+	<artifactId>java-sysd-notify-watchdog</artifactId>
+	<version>1.0</version>
+	<packaging>nar</packaging>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<myfn>java-sysd-notify-watchdog-1.1</myfn>
+	</properties>
+
+	<name>java-sysd-notify-watchdog</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.scijava</groupId>
+			<artifactId>native-lib-loader</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<finalName>${myfn}</finalName>
+					<archive>
+						<manifest>
+							<mainClass>c.sysdnotify</mainClass>
+						</manifest>
+					</archive>
+					<descriptors>
+						<descriptor>src/main/assembly/uber.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.github.maven-nar</groupId>
+				<artifactId>nar-maven-plugin</artifactId>
+				<version>3.2.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<cpp>
+						<debug>true</debug>
+					</cpp>
+					<libraries>
+						<library>
+							<type>jni</type>
+							<narSystemPackage>c</narSystemPackage>
+							<linkCPP>false</linkCPP>
+						</library>
+					</libraries>
+				</configuration>
+			</plugin>
+			     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+            <configuration>
+            	<artifactId>${project.artifactId}</artifactId>
+            	<groupId>${project.groupId}</groupId>
+            	<version>1.1</version>
+            	<file>target/java-sysd-notify-watchdog-1.1.jar</file>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+<!-- 			      <plugin> -->
+<!--         <groupId>org.codehaus.mojo</groupId> -->
+<!--         <artifactId>build-helper-maven-plugin</artifactId> -->
+<!--         <version>1.9.1</version> -->
+<!--         <executions> -->
+<!--           <execution> -->
+<!--             <id>attach-artifacts</id> -->
+<!--             <phase>package</phase> -->
+<!--             <goals> -->
+<!--               <goal>attach-artifact</goal> -->
+<!--             </goals> -->
+<!--             <configuration> -->
+<!--               <artifacts> -->
+<!--                 <artifact> -->
+<!--                   <file>target/${myfn}.jar</file> -->
+<!--                   <type>jar</type> -->
+<!--                 </artifact> -->
+<!--                 ... -->
+<!--               </artifacts> -->
+<!--             </configuration> -->
+<!--           </execution> -->
+<!--         </executions> -->
+<!--       </plugin> -->
+		</plugins>
+	</build>
+
+</project>
