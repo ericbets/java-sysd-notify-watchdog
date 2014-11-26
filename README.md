@@ -2,6 +2,7 @@
 
 Lib for java daemons to send keep-alive messages to refresh the systemd watchdog timestamp.
 
+Use the version 1.1 build artifact.
 ```xml
 	<groupId>org.tricorder</groupId>
 	<artifactId>java-sysd-notify-watchdog</artifactId>
