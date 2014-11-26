@@ -93,7 +93,7 @@ public class SysDNotifier {
 	            	// Tell quartz to schedule the job using our trigger
 	            	scheduler.scheduleJob(job, trigger);
 
-	            scheduler.shutdown();
+	            
 
 	        } catch (SchedulerException se) {
 	            se.printStackTrace();
