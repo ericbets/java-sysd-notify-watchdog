@@ -1,6 +1,7 @@
 ### Send watchdog notifications to systemd
 
 Lib for java daemons to send keep-alive messages to refresh the systemd watchdog timestamp.
+Or you can use this [project](https://github.com/ericbets/shell-sysd-notify-watchdog) to do it using /usr/bin/systemd-notify utility.
 
 Use the version 1.1 build artifact.
 ```xml
@@ -37,7 +38,7 @@ Use the version 1.1 build artifact.
 Description=My Service
 
 [Service]
-PIDFile=/tmp/my-service.pid
+#PIDFile=/tmp/my-service.pid
 Environment=LD_PRELOAD=/usr/lib64/libsystemd-daemon.so
 ExecStart=/usr/lib/jvm/java-1.8.0/bin/java -jar /usr/local/bin/my-service.jar
 WatchdogSec=500
