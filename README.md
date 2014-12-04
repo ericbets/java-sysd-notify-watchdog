@@ -1,7 +1,7 @@
 ### Send watchdog notifications to systemd
 
 Lib for java daemons to send keep-alive messages to refresh the systemd watchdog timestamp.
-Or you can use this [project](https://github.com/ericbets/shell-sysd-notify-watchdog) to do it using /usr/bin/systemd-notify utility.
+Or you can use this [project](https://github.com/ericbets/shell-sysd-notify-watchdog) to do it using the /usr/bin/systemd-notify utility.
 
 Use the version 1.1 build artifact.
 ```xml
